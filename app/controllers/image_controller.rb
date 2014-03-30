@@ -2,6 +2,11 @@ class ImageController < ApplicationController
 
 def index
   @images = BaseImage.paginate(:page => params[:page], :per_page => 10)
+  if params[:popup].blank?
+   render :template=>"/image/index" 
+  else
+  	render :template=>"/image/index" ,:layout=>false
+  end
 end
 
 def new

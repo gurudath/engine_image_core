@@ -5,7 +5,7 @@
       <section>
 <%unless @images.blank?%>
 <%@images.each do |image|%>
-  <p  style="font-size: 2em; color: #FF8000;"><%=image.name%><span style="padding-left: 50%;"><%=image_tag(image.image_path,:size => "250x250", :alt => "#{image.name}")%></span><span style="font-size:0.8em; color: #FF8000;"><%=link_to("imsert_image","javacript:void(0)",:class=>"insert_image","data-id"=>"#{image.id}","data-src"=>"#{image}") if params["popup"]=="true"%></span></p>
+  <p  style="font-size: 2em; color: #FF8000;"><%=image.name%><span style="padding-left: 50%;"><%=image_tag(image.image_path,:size => "250x250", :alt => "#{image.name}")%></span><span style="font-size:0.8em; color: #FF8000;"><%=link_to("insert_image","javacript:void(0)",:class=>"insert_image","data-id"=>"#{image.id}","data-src"=>"#{image.image_path}") if params["popup"]=="true"%></span></p>
  <%end%>
  <%= will_paginate @images %>
 <%end%>
@@ -15,8 +15,9 @@
  </div>
 </div>
 <%if not  params["popup"].blank? and params["popup"]=="true"%>
-<script type="text/javascript">
-jQuery('.insert_image').click(function(){
+  <script type="text/javascript" src="/javascripts/jquery.min.js"></script>
+  <script type="text/javascript">
+$('.insert_image').click(function(){
  var id = jQuery(this).attr('data-id')
  var src = jQuery(this).attr('data-src')
  window.opener.$("#before_upload").show();
