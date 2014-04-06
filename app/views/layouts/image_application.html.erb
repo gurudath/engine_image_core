@@ -9,12 +9,16 @@
     <!-- Included Bootstrap CSS Files -->
 	<link rel="stylesheet" href="/stylesheets/bootstrap/css/bootstrap.min.css" />
 	<link rel="stylesheet" href="/stylesheets/bootstrap/css/bootstrap-responsive.min.css" />
-	
+		<script src="/javascripts/jquery-1.10.0.min.js"></script>
+	<script src="/javascripts/bootstrap/js/bootstrap.min.js"></script>
+	<script src="/javascripts/script.js"></script>
 	<!-- Css -->	
 	<link rel="stylesheet" href="/stylesheets/article_style.css" />
     <%= csrf_meta_tags %>
 </head>
 <body id="start">
+	      <%=render :partial=>"/layouts/menu"%>
+
 	<!-- This is the overlay DIV that is displayed while loading a new page -->
 	<div id="loader"></div>
 
@@ -46,9 +50,7 @@
 	<%end%>
 	
 
-	<script src="/javascripts/jquery-1.10.0.min.js"></script>
-	<script src="/javascripts/bootstrap/js/bootstrap.min.js"></script>
-	<script src="/javascripts/script.js"></script>
+
 </body>
 <style type="text/css">
  .span4 {
