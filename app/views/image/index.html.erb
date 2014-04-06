@@ -1,19 +1,9 @@
-<div class="wrapper row3">
-  <div id="container">
-    <div class="pad">
-      <%#=link_to("Add Doctor",{:action=>"new"},:class=>"mybutton back")%>
-      <section>
-<%unless @images.blank?%>
-<%@images.each do |image|%>
-  <p  style="font-size: 2em; color: #FF8000;"><%=image.name%><span style="padding-left: 50%;"><%=image_tag(image.image_path,:size => "250x250", :alt => "#{image.name}")%></span><span style="font-size:0.8em; color: #FF8000;"><%=link_to("insert_image","javacript:void(0)",:class=>"insert_image","data-id"=>"#{image.id}","data-src"=>"#{image.image_path}") if params["popup"]=="true"%></span></p>
- <%end%>
- <%= will_paginate @images %>
-<%end%>
-</section>
-    </div>
-  </div>
- </div>
+<div class="content">
+   <%cache("component2") do%>
+      <%=raw render_template_in_format({:object=>(!params[:popup].blank? ? BaseImage.all : @images),:header_include=>[],:main_header=>{},:decoration=>"/decoration/decoration_empty",:partial=>"/image/index"})%>
+       <%end%>  
 </div>
+
 <%if not  params["popup"].blank? and params["popup"]=="true"%>
   <script type="text/javascript" src="/javascripts/jquery.min.js"></script>
   <script type="text/javascript">
@@ -28,24 +18,3 @@ $('.insert_image').click(function(){
  });
 </script>
 <%end%>
-<style type="text/css">
-.mybutton {
-display: inline-block;
-position: relative;
-margin: 10px;
-padding: 0 20px;
-text-align: center;
-text-decoration: none;
-font: bold 12px/25px Arial, sans-serif;
-box-shadow:#000 4px 4px 5px;
-}
-.back {
-background-color: #FF8000;
-color: #000000;
-}
-.row3 a {
-    background-color: grey;
-    color: #FF9900;
-}
-</style>
-

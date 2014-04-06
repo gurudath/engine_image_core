@@ -1,0 +1,18 @@
+<% object.each do |obj|%>
+   <div class="span4">
+      <div class="caption">
+     <div class="item">         
+      <%=image_tag(obj.resize_image(370,200)) if !obj.blank?%><%=link_to("insert_image","javacript:void(0)",:class=>"insert_image","data-id"=>"#{obj.id}","data-src"=>"#{obj.resize_image(100,100)}") if params["popup"]=="true"%>
+      </div>
+     </div> 
+    </div>
+  <!--/div-->
+<% end%>
+
+
+
+              
+              
+    		
+							
+		

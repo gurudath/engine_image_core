@@ -1,5 +1,5 @@
 class BaseImage < ActiveRecord::Base
-	require 'RMagick'
+require 'RMagick'
 include Magick
 
 #belongs_to :entity, :polymorphic => true
